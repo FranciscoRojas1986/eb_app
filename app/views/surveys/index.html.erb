@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Encuestas</h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Nombre</th>
+      <th>Tipo</th>
+      <th>Descripción</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @surveys.each do |survey| %>
+      <tr>
+        <td><%= survey.name %></td>
+        <td><%= survey.kind %></td>
+        <td><%= survey.description %></td>
+        <td><%= link_to  survey do %>
+<i class="fas fa-pencil-alt fa-3x" style="color:green"></i>
+<% end %>
+        </td>
+        <td><%= link_to edit_survey_path(survey) do %>
+         <i class="fas fa-tools fa-3x" style="color:blue"></i>
+        <% end %>
+        </td>
+        <td><%= link_to method: :delete, data: { confirm: 'Are you sure?' } do %>
+         <i class="fas fa-eraser fa-3x" style="color:red"></i>
+         <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Survey', new_survey_path %>
